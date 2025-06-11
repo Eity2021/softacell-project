@@ -7,7 +7,8 @@ import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from '@mui/material/styles';
 import reportWebVitals from './reportWebVitals';
 import theme from './components/theme/theme';
-
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import './index.css';
 
 const container = document.getElementById('root');
@@ -18,8 +19,9 @@ root.render(
     <Provider store={store}>
    <BrowserRouter basename="/">
        <ThemeProvider theme={theme}>
-
+  <LocalizationProvider dateAdapter={AdapterDayjs}>
         <App />
+         </LocalizationProvider>
        </ThemeProvider>
       </BrowserRouter>
     </Provider>

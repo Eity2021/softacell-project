@@ -6,7 +6,6 @@ import {
   ListItemText,
   Collapse,
   ListItemIcon,
-  Typography,
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import { ChevronDown, ChevronUp } from "lucide-react";
