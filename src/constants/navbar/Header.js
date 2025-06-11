@@ -1,7 +1,21 @@
-import React from 'react'
+import  { useState } from 'react';
+import {
+  IconButton,
+  List,
+  ListItem,
+  ListItemText,
+  Box,
+  Typography,
+} from '@mui/material';
+import { Menu,X } from 'lucide-react';
 
-export default function Header() {
+export default function Header({routes}) {
+
+
   return (
-    <div>Dashboard</div>
+<Box>
+  gfgdfgdfgdfgdfgdf
+  
+    </Box>
   )
 }

@@ -4,7 +4,10 @@ import { Provider } from 'react-redux';
 import { store } from './app/store';
 import App from './App';
 import { BrowserRouter } from "react-router-dom";
+import { ThemeProvider } from '@mui/material/styles';
 import reportWebVitals from './reportWebVitals';
+import theme from './components/theme/theme';
+
 import './index.css';
 
 const container = document.getElementById('root');
@@ -14,7 +17,10 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
    <BrowserRouter basename="/">
+       <ThemeProvider theme={theme}>
+
         <App />
+       </ThemeProvider>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>
