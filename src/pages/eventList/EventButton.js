@@ -20,7 +20,6 @@ export default function EventButton() {
         <Grid container spacing={2}>
           <Grid size={{ xs: 6, md: 3 }}>
             <TextField
-              sx={{ borderRadius: "33px", borderColor: "1px solid #0195FF" }}
               fullWidth
               placeholder="Search"
               value={searchTerm}
@@ -32,7 +31,8 @@ export default function EventButton() {
                   </InputAdornment>
                 ),
                 sx: {
-                  borderRadius: "50px",
+                    borderRadius: "33px", 
+                  borderColor: "1px solid #0195FF" ,
                   borderColor: "#2196f3",
                   "& .MuiOutlinedInput-notchedOutline": {
                     borderColor: "#2196f3",
