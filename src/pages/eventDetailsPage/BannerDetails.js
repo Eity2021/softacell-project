@@ -6,14 +6,13 @@ import tablerLocation from "../../image/icons/tabler_location.png";
 import Vector from "../../image/icons/Vector.png";
 export default function BannerDetails () {
   return (
-    <Box>
+    <Box sx={{height:'74vh'}}>
    
       <Box
         sx={{
           width: '100%',
           height:'391px',
           borderRadius: '12px', 
-          boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)', 
           // overflow: 'hidden', 
           fontFamily: 'Inter, sans-serif',
         }}
