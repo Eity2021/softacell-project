@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 
 import { Toolbar, Box } from "@mui/material";
 import SideBar from "./SideBar";
+import Header from "./Header";
 import routes from "../../routes";
 import CustomContainer from "../../components/customContainer/CustomContainer";
 
@@ -25,7 +26,8 @@ export default function Navbar() {
             bgcolor: "background.default",
           }}
         >
-          <Toolbar />
+          <Header></Header>
+
           <Routes>{renderRoutes(routes)}</Routes>
         </Box>
       </Box>

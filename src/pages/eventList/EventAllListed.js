@@ -8,13 +8,19 @@ import {
   Pencil as Edit,
   Trash2 as Delete,
 } from "lucide-react";
-
+import { useNavigate } from "react-router-dom";
 
 
 export default function EventAllListed({event}) {
   
   let allEvent = event?.results;
-  
+
+  const navigate = useNavigate();
+  const  singlePage = (id) => {
+   navigate(`/detailsMainIndex/${id}`)
+
+  }
+
   return (
     <Box >
       <Box sx={{ p: 2,mt:5}}>
@@ -24,7 +30,7 @@ export default function EventAllListed({event}) {
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            mb: 2,
+            mb: 4,
             px: 3,
           }}
         >
@@ -44,12 +50,12 @@ export default function EventAllListed({event}) {
             <Paper
               key={event.id}
               sx={{
-                p: 3,
+                p: 4,
                 borderRadius: '8px',
                 border: event?.bg_color !== 'transparent' ? `1px solid ${event?.bg_color}` : '1px solid #CCCCCC',
                 boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.0)', 
                 '&:hover': {
-                  boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
+                  boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.0)',
                 },
               }}
             >
@@ -150,7 +156,7 @@ export default function EventAllListed({event}) {
                 </Box>
                 {/* Actions */}
                 <Stack direction="row" spacing={0.5} sx={{ width: '160px', justifyContent: 'flex-end' }}>
-                  <IconButton size="small" sx={{ color: '#161616' }}>
+                  <IconButton size="small" sx={{ color: '#161616' }} onClick={() => {singlePage(event?.id)}}>
                     <Visibility fontSize="small" />
                   </IconButton>
                   <IconButton size="small" sx={{color:'#161616'}}>

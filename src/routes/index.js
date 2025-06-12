@@ -224,7 +224,7 @@ const routes= [
   },
   
   {
-    path: '/detailsMainIndex',
+    path: '/detailsMainIndex/:id',
     name:"Support & Feedback",
     icon: <img src={Calling} alt="dashboard icon"/>,
     element: (
