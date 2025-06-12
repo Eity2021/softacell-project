@@ -136,6 +136,7 @@ export default function EventButton() {
               fontWeight: 400,
               fontSize: "18px",
               fontFamily: "poppins",
+              textTransform: 'lowercase'
             }}
           >
             Event Calendar
@@ -151,6 +152,7 @@ export default function EventButton() {
               fontWeight: 400,
               fontSize: "18px",
               fontFamily: "poppins",
+              textTransform: 'lowercase'
             }}
           >
             Create Event

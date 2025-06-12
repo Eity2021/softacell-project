@@ -13,6 +13,7 @@ import {
 import {
   ChevronLeft,
   ChevronRight,
+  ChevronDown
 } from "lucide-react";
 import EventButton from "./EventButton";
 import EventAllListed from "./EventAllListed";
@@ -22,7 +23,7 @@ export default function EventSearch() {
 
   return (
     <Box>
-    <Box sx={{display:'flex',mt:2}}>
+    <Box sx={{display:'flex',mt:3}}>
         <Typography sx={{fontWeight:500,fontSize:'20px', fontFamily:'poppins',color:'#0195FF',pr:.5}}> 100,000+   </Typography> 
       <Typography sx={{fontWeight:500,fontSize:'20px', fontFamily:'poppins',color:'#003255' ,mb:2}} >
           events happening this month
@@ -71,19 +72,35 @@ export default function EventSearch() {
 
 </Box>
         {/* Pagination */}
-        <Box display="flex" justifyContent="space-between" alignItems="center" mt={2}>
-          <Box display="flex" alignItems="center" gap={1}>
-            <Typography variant="body2">Rows per page:</Typography>
-            <Select size="small" defaultValue={10}>
+        <Box display="flex" justifyContent="end" alignItems="center" mt={2} gap={2}>
+          <Box display="flex" alignItems="center" >
+            <Typography sx={{  
+              fontWeight: 500,
+              fontSize: "16px",
+              fontFamily: "poppins",
+              color:'#161616',
+              mr:2
+              }}>Rows per page:</Typography>
+               <Typography sx={{   fontWeight: 500,
+              fontSize: "16px",
+              fontFamily: "poppins",
+              color:'#161616'
+              }}>10 </Typography>
+              <ChevronDown  fontSize="small" color="#0195FF"/>
+            {/* <Select size="small" defaultValue={10} >
               <MenuItem value={5}>5</MenuItem>
               <MenuItem value={10}>10</MenuItem>
               <MenuItem value={20}>20</MenuItem>
-            </Select>
+            </Select> */}
           </Box>
+
           <Box display="flex" alignItems="center" gap={1}>
-            <Typography variant="body2">1-2 of 2</Typography>
-            <IconButton disabled><ChevronLeft fontSize="small" /></IconButton>
-            <IconButton disabled><ChevronRight fontSize="small" /></IconButton>
+            <Typography sx={{     fontWeight: 500,
+              fontSize: "16px",
+              fontFamily: "poppins",
+              color:'#161616'}}>1-2 of 2</Typography>
+            <IconButton disabled><ChevronLeft fontSize="small" color="#0195FF"/></IconButton>
+            <IconButton disabled><ChevronRight fontSize="small" color="#0195FF"/></IconButton>
           </Box>
         </Box>
     </Box>

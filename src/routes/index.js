@@ -1,5 +1,6 @@
 import  { Suspense } from 'react';
 import EventList from '../pages/eventList/EventList';
+import DetailsMainIndex from '../pages/eventDetailsPage/DetailsMainIndex';
 import Dashboard from '../pages/dashboard/Dashboard';
 import { Circle } from 'lucide-react';
 
@@ -223,12 +224,12 @@ const routes= [
   },
   
   {
-    path: '/eventList',
+    path: '/detailsMainIndex',
     name:"Support & Feedback",
     icon: <img src={Calling} alt="dashboard icon"/>,
     element: (
       <Suspense fallback={<p>Loading...</p>}>
-             <EventList />
+             <DetailsMainIndex />
       </Suspense>
     ),
 

@@ -76,7 +76,7 @@ const events = [
 export default function EventAllListed() {
   return (
     <Box >
-      <Box sx={{ p: 4}}>
+      <Box sx={{ p: 2,mt:5}}>
         {/* Table Header */}
         <Box
           sx={{
@@ -84,7 +84,7 @@ export default function EventAllListed() {
             justifyContent: 'space-between',
             alignItems: 'center',
             mb: 2,
-            px: 2,
+            px: 3,
           }}
         >
           {/* Adjusted flexGrow values to roughly match visual distribution */}
@@ -103,10 +103,10 @@ export default function EventAllListed() {
             <Paper
               key={event.id}
               sx={{
-                p: 2,
+                p: 3,
                 borderRadius: '8px',
-                border: event.borderColor !== 'transparent' ? `1px solid ${event.borderColor}` : '1px solid transparent',
-                boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.05)', 
+                border: event.borderColor !== 'transparent' ? `1px solid ${event.borderColor}` : '1px solid #CCCCCC',
+                boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.0)', 
                 '&:hover': {
                   boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
                 },
