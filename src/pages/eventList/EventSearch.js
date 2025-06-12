@@ -19,7 +19,7 @@ import EventButton from "./EventButton";
 import EventAllListed from "./EventAllListed";
 
 
-export default function EventSearch() {
+export default function EventSearch({event}) {
 
   return (
     <Box>
@@ -68,7 +68,7 @@ export default function EventSearch() {
 
 
 <Box>
-   <EventAllListed></EventAllListed> 
+   <EventAllListed event={event}></EventAllListed> 
 
 </Box>
         {/* Pagination */}

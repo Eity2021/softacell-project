@@ -9,71 +9,12 @@ import {
   Trash2 as Delete,
 } from "lucide-react";
 
-const events = [
-  {
-    id: '01',
-    eventName: 'Ajmon Brokers Event',
-    poweredBy: 'RAK Properties',
-    eventDate: 'March 18, 2025',
-    eventTime: '10:00 a.m. - 7:00 p.m.',
-    eventLocation: 'Dubai',
-    eventSubLocation: 'Al Ain',
-    country: 'UAE',
-    status: 'Approved',
-    borderColor: 'transparent',
-  },
-  {
-    id: '02',
-    eventName: 'Ajmon Brokers Event',
-    poweredBy: 'RAK Properties',
-    eventDate: 'March 18, 2025',
-    eventTime: '10:00 a.m. - 7:00 p.m.',
-    eventLocation: 'Dubai',
-    eventSubLocation: 'Al Ain',
-    country: 'UAE',
-    status: 'Pending',
-    borderColor: 'transparent',
-  },
-  {
-    id: '03',
-    eventName: 'Ajmon Brokers Event',
-    poweredBy: 'RAK Properties',
-    eventDate: 'March 18, 2025',
-    eventTime: '10:00 a.m. - 7:00 p.m.',
-    eventLocation: 'Dubai',
-    eventSubLocation: 'Al Ain',
-    country: 'UAE',
-    status: 'Rejected',
-    borderColor: '#EF5350',
-  },
-  {
-    id: '04',
-    eventName: 'Ajmon Brokers Event',
-    poweredBy: 'RAK Properties',
-    eventDate: 'March 18, 2025',
-    eventTime: '10:00 a.m. - 7:00 p.m.',
-    eventLocation: 'Dubai',
-    eventSubLocation: 'Al Ain',
-    country: 'UAE',
-    status: 'Approved',
-    borderColor: '#42A5F5',
-  },
-  {
-    id: '05',
-    eventName: 'Ajmon Brokers Event',
-    poweredBy: 'RAK Properties',
-    eventDate: 'March 18, 2025',
-    eventTime: '10:00 a.m. - 7:00 p.m.',
-    eventLocation: 'Dubai',
-    eventSubLocation: 'Al Ain',
-    country: 'UAE',
-    status: 'Approved',
-    borderColor: 'transparent',
-  },
-];
 
 
-export default function EventAllListed() {
+export default function EventAllListed({event}) {
+  
+  let allEvent = event?.results;
+  
   return (
     <Box >
       <Box sx={{ p: 2,mt:5}}>
@@ -99,13 +40,13 @@ export default function EventAllListed() {
 
         {/* Event Rows */}
         <Stack spacing={2}>
-          {events.map((event) => (
+          {allEvent?.map((event) => (
             <Paper
               key={event.id}
               sx={{
                 p: 3,
                 borderRadius: '8px',
-                border: event.borderColor !== 'transparent' ? `1px solid ${event.borderColor}` : '1px solid #CCCCCC',
+                border: event?.bg_color !== 'transparent' ? `1px solid ${event?.bg_color}` : '1px solid #CCCCCC',
                 boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.0)', 
                 '&:hover': {
                   boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
@@ -129,7 +70,7 @@ export default function EventAllListed() {
                 {/* Event Name */}
                 <Box sx={{  width: '200px'}}>
                   <Typography variant="body1" sx={{ fontSize: '16px', fontWeight: 500, fontFamily: 'poppins', color: '#000' }}>
-                    {event.eventName}
+                    {event?.title || "Ajmon Brokers Event" }
                   </Typography>
                   <Typography variant="caption" sx={{ fontSize: '10px', fontWeight: 400, fontFamily: 'poppins', color: '#666666' }}>
                     Powered by {event.poweredBy}
@@ -139,48 +80,61 @@ export default function EventAllListed() {
                 {/* Event Date */}
                 <Box sx={{ width: '150px'}}>
                   <Typography variant="body1" sx={{ fontSize: '16px', fontWeight: 500, fontFamily: 'poppins', color: '#000' }}>
-                    {event.eventDate}
+                    {new Date(event?.start_date).toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                    })}
                   </Typography>
-                  <Typography variant="caption" sx={{ fontSize: '10px', fontWeight: 400, fontFamily: 'poppins', color: '#333333' }}>
-                    {event.eventTime}
-                  </Typography>
+                 <Typography variant="caption" sx={{ fontSize: '10px', fontWeight: 400, fontFamily: 'poppins', color: '#333333' }}>
+              {new Date(`1970-01-01T${event?.start_time}`).toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true,
+  })} -{' '}
+  {new Date(`1970-01-01T${event?.end_time}`).toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true,
+  })}
+                  </Typography> 
                 </Box>
 
 
                 {/* Event Location */}
                 <Box sx={{ width: '200px' }}>
                   <Typography variant="body1" sx={{ fontSize: '16px', fontWeight: 500, fontFamily: 'poppins', color: '#000' }}>
-                    {event.eventLocation}
+                    {event?.location || "Dubai"}
                   </Typography>
                   <Typography variant="caption" sx={{ fontSize: '10px', fontWeight: 400, fontFamily: 'poppins', color: '#333333' }}>
-                    {event.eventSubLocation}
+                    {event?.SubLocation || 'UAE'}
                   </Typography>
                 </Box>
                 {/* Country */}
                 <Box sx={{ width: '100px'}}>
                   <Typography variant="body1" sx={{ flexGrow: 1, fontSize: '16px', fontWeight: 500, fontFamily: 'poppins', color: '#000' }}>
-                    {event.eventLocation}
+                     {event?.location || "Dubai"}
                   </Typography>
                   <Typography variant="caption" sx={{ fontSize: '10px', fontWeight: 400, fontFamily: 'poppins', color: '#333333' }}>
-                    {event.country}
+                  {event?.SubLocation || 'UAE'}
                   </Typography>
                 </Box>
                 {/* Status Chip */}
                 <Box sx={{  width: '80px'}}>
                   {
-                    event.status === "Approved" ? (
+                    event?.status === "approved" ? (
                       <Typography size="small"
                         sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: '18px', width: '134px', height: '36px', fontSize: '16px', fontWeight: 300, fontFamily: 'poppins', border: '1px solid #22D106', color: "#22D106" }} >
                         {event.status}
 
                       </Typography>
-                    ) : event.status === "Pending" ? (
+                    ) : event.status === "pending" ? (
                       <Typography size="small"
                         sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: '18px', width: '134px', height: '36px', fontSize: '16px', fontWeight: 300, fontFamily: 'poppins', border: '1px solid #F5BE30', color: "#F5BE30" }} >
                         {event.status}
 
                       </Typography>
-                    ) : event.status === "Rejected" ? (
+                    ) : event.status === "rejected" ? (
                       <Typography size="small"
                         sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: '18px', width: '134px', height: '36px', fontSize: '16px', fontWeight: 300, fontFamily: 'poppins', border: '1px solid #FF1F00', color: "#FF1F00" }} >
                         {event.status}
@@ -196,16 +150,16 @@ export default function EventAllListed() {
                 </Box>
                 {/* Actions */}
                 <Stack direction="row" spacing={0.5} sx={{ width: '160px', justifyContent: 'flex-end' }}>
-                  <IconButton size="small" sx={{ color: '#9E9E9E' }}>
+                  <IconButton size="small" sx={{ color: '#161616' }}>
                     <Visibility fontSize="small" />
                   </IconButton>
-                  <IconButton size="small" color='#161616'>
+                  <IconButton size="small" sx={{color:'#161616'}}>
                     <DownloadIcon fontSize="small" />
                   </IconButton>
-                  <IconButton size="small" color='#161616'>
+                  <IconButton size="small" sx={{color:'#161616'}}>
                     <Edit fontSize="small" />
                   </IconButton>
-                  <IconButton size="small" color='#161616'>
+                  <IconButton size="small" sx={{color:'#161616'}}>
                     <Delete fontSize="small" />
                   </IconButton>
                 </Stack>
