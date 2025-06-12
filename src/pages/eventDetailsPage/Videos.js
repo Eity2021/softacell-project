@@ -293,7 +293,6 @@ import { MapPin ,Star  } from 'lucide-react';
 
           <TextField
             variant="outlined"
-             
             defaultValue="meet.google.com/abc/defg/hij" 
             sx={{
                 width:'40%',
@@ -313,12 +312,12 @@ import { MapPin ,Star  } from 'lucide-react';
                 },
               },
               '& .MuiInputBase-input': {
-                fontSize: { xs: '0.95rem', md: '1.1rem' },
+                fontSize: { xs: '22px', md: '32px' },
                 fontFamily: 'poppins',
                 color: '#56B8FF',
                 padding: '12px 14px',
               },
-              flexGrow: 1,
+              flexGrow: 1, 
             }}
             InputProps={{
                 readOnly: true, 
@@ -348,8 +347,6 @@ import { MapPin ,Star  } from 'lucide-react';
           </Button>
         </Box>
         </Box>
-
-   
   );
 };
 
