@@ -106,7 +106,7 @@ export default function EventAllListed() {
                 p: 2,
                 borderRadius: '8px',
                 border: event.borderColor !== 'transparent' ? `1px solid ${event.borderColor}` : '1px solid transparent',
-                boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.05)',
+                boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.05)', 
                 '&:hover': {
                   boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
                 },
