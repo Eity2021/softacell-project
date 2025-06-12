@@ -19,12 +19,14 @@ import Calender from "../../image/icons/calenderIcon.png";
 import { Upload } from "lucide-react";
 import CustomSelect from "../../components/customSelect/CustomSelect";
 import useDatePicker from "../../components/customDatePicker/useDatePicker";
-
+import { useForm, Controller } from 'react-hook-form';
 const CustomCalendarIcon = () => (
   <img src={Calender} alt="calendar" style={{ width: 20, height: 20 }} />
 );
 
 export default function Dashboard() {
+   const { control, handleSubmit } = useForm();
+  const [preview, setPreview] = useState(null);
   const [subCategory, setSubCategory] = useState("");
   const datePicker = useDatePicker();
   const subCategoryOptions = [
@@ -33,19 +35,41 @@ export default function Dashboard() {
     { value: "marketing", label: "Marketing" },
   ];
 
+
+  const onSubmit = (data) => {
+    console.log("Submitted image file:", data.image[0]);
+  };
   return (
     <Box sx={{ margin: "auto", p: 3, bgcolor: "white" }}>
-      <Typography
+      <form onSubmit={handleSubmit(onSubmit)}>
+  <Box sx={{display:'flex', gap:2}}>
+        <Typography
         sx={{
           fontWeight: 600,
           color: "#F5BE30",
           fontSize: { xs: "12px", md: "14px" },
           fontFamily: "poppins",
+          display:'flex',
+          alignItems:'center'
         }}
       >
         You are creating event as
       </Typography>
-
+   
+               <TextField
+               sx={{
+                width:'30%'
+               }}
+          id="outlined-read-only-input"
+          label="Not Changeable"
+          defaultValue="Real Estate Developer"
+          slotProps={{
+            input: {
+              readOnly: true,
+            },
+          }}
+        />
+  </Box>
       <Box mb={4}>
         <Typography
           sx={{
@@ -60,7 +84,7 @@ export default function Dashboard() {
 
         <Typography
           sx={{
-            fontWeight: 400,
+            fontWeight: 600,
             color: "#30394D",
             fontSize: { xs: "13px", md: "16px" },
             fontFamily: "poppins",
@@ -80,28 +104,67 @@ export default function Dashboard() {
           Upload image file (max size 10 MB) and 16:9 ratio
         </Typography>
 
-        <Paper
-          elevation={0}
-          variant="outlined"
-          // onDragEnter={handleDrag}
-          // onDragLeave={handleDrag}
-          // onDragOver={handleDrag}
-          // onDrop={handleDrop}
-          sx={{
-            p: 6,
-            mt: 2,
-            textAlign: "center",
-            borderStyle: "dashed",
-            // // borderColor: dragActive ? 'primary.main' : 'grey.400',
-            // backgroundColor: dragActive ? 'blue.50' : 'inherit',
-          }}
-        >
-          <Upload style={{ marginBottom: "8px" }} />
-          <Typography variant="body2">
-            <strong>Drag image</strong> or{" "}
-            <Button variant="text">Browse</Button>
-          </Typography>
-        </Paper>
+
+<Box>
+  
+
+              <Controller
+        name="image"
+        control={control}
+        defaultValue={[]}
+        render={({ field: { onChange, ...field } }) => (
+          <Box
+            component="label"
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: 200,
+              border: '2px dashed #ccc',
+              borderRadius: 2,
+              cursor: 'pointer',
+              position: 'relative',
+              textAlign: 'center',
+              p: 2,
+              mb: 2,
+              mt:2,
+              overflow: 'hidden',
+            }}
+          >
+            {preview ? (
+              // <img
+              //   src={preview}
+              //   alt="Preview"
+              //   style={{ maxHeight: '100%', maxWidth: '100%', objectFit: 'contain' }}
+              // />
+              <Typography> image get</Typography>
+            ) : (
+              <>
+                <Typography variant="body1" fontWeight={600}>
+                  Drag image or <span style={{ color: '#0195FF' }}>Browse</span>
+                </Typography>
+                <Typography variant="caption" color="text.secondary">
+                  Max. file size: 3MB
+                </Typography>
+              </>
+            )}
+   <input
+  type="file"
+  accept="image/*"
+  hidden
+  onChange={(e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setPreview(URL.createObjectURL(file)); 
+      onChange(e.target.files); 
+    }
+  }}
+/>
+          </Box>
+        )}
+      />
+</Box>
 
         <Box>
           <Typography
@@ -822,6 +885,8 @@ export default function Dashboard() {
           </Grid>
         </Grid>
       </Box>
+
+
       <Box sx={{ mt: 2 }}>
         <Grid container spacing={2}>
           <Grid size={3}>
@@ -861,6 +926,131 @@ export default function Dashboard() {
           </Grid>
         </Grid>
       </Box>
+
+
+<Box>
+  
+        <Typography
+          sx={{
+            fontWeight: 600,
+            color: "#30394D",
+            fontSize: { xs: "13px", md: "16px" },
+            fontFamily: "poppins",
+            mt: 4,
+          }}
+        >
+          Images
+        </Typography>
+        <Typography
+          sx={{
+            fontWeight: 600,
+            color: "#A8B0BF",
+            fontSize: { xs: "12px", md: "14px" },
+            fontFamily: "poppins",
+          }}
+        >
+          Upload image file (max size 10 MB) and 16:9 ratio
+        </Typography>
+
+</Box>
+<Box>
+  
+
+              <Controller
+        name="image"
+        control={control}
+        defaultValue={[]}
+        render={({ field: { onChange, ...field } }) => (
+          <Box
+            component="label"
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: 200,
+              border: '2px dashed #ccc',
+              borderRadius: 2,
+              cursor: 'pointer',
+              position: 'relative',
+              textAlign: 'center',
+              p: 2,
+              mb: 2,
+              mt:2,
+              overflow: 'hidden',
+            }}
+          >
+            {preview ? (
+              // <img
+              //   src={preview}
+              //   alt="Preview"
+              //   style={{ maxHeight: '100%', maxWidth: '100%', objectFit: 'contain' }}
+              // />
+              <Typography> image get</Typography>
+            ) : (
+              <>
+                <Typography variant="body1" fontWeight={600}>
+                  Drag image or <span style={{ color: '#0195FF' }}>Browse</span>
+                </Typography>
+                <Typography variant="caption" color="text.secondary">
+                  Max. file size: 3MB
+                </Typography>
+              </>
+            )}
+   <input
+  type="file"
+  accept="image/*"
+  hidden
+  onChange={(e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setPreview(URL.createObjectURL(file)); 
+      onChange(e.target.files); 
+    }
+  }}
+/>
+          </Box>
+        )}
+      />
+</Box>
+
+      <Box   sx={{display:"flex", justifyContent:'flex-end',gap:2 ,ml:2}}>
+          <Button
+            variant="outlined"
+            fullWidth
+            sx={{
+              width: "400px",
+              height: "60px",
+              borderRadius: "12px",
+              backgroundColor: "#F4F8EE",
+              fontWeight: 400,
+              fontSize: "18px",
+              fontFamily: "poppins",
+              textTransform: 'lowercase'
+            }}
+          >
+            Save draft and Exit
+          </Button>
+          <Button
+          type="submit"
+            variant="contained"
+            fullWidth
+            sx={{
+              width: "400px",
+              height: "60px",
+              borderRadius: "12px",
+              backgroundColor: "#0195FF",
+              fontWeight: 400,
+              fontSize: "18px",
+              fontFamily: "poppins",
+              textTransform: 'lowercase'
+            }}
+          >
+            Submit
+          </Button>
+    </Box>
+      </form>
+
     </Box>
   );
 }
