@@ -19,7 +19,7 @@ root.render(
     <Provider store={store}>
    <BrowserRouter basename="/">
        <ThemeProvider theme={theme}>
-  <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
         <App />
          </LocalizationProvider>
        </ThemeProvider>

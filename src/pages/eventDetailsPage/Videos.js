@@ -255,25 +255,6 @@ import { MapPin ,Star  } from 'lucide-react';
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        {/* Bottom Section: Event Meeting Link */}
         <Box
           sx={{
             display: 'flex',
@@ -285,12 +266,12 @@ import { MapPin ,Star  } from 'lucide-react';
         >
           <Box sx={{ flexShrink: 0 }}> 
             <Typography
-              variant="h5"
+              variant="h5" 
               sx={{
                 fontWeight: 600,
-                color: '#1a1a1a',
-                fontSize: { xs: '1.4rem', md: '1.75rem' },
-                fontFamily: 'Inter, sans-serif',
+                color: '#001E33',
+                fontSize: { xs: '22px', md: '32px' },
+                fontFamily: 'poppins',
                 mb: 0.5,
               }}
             >
@@ -300,9 +281,9 @@ import { MapPin ,Star  } from 'lucide-react';
               variant="h5"
               sx={{
                 fontWeight: 600,
-                color: '#3f51b5', 
-                fontSize: { xs: '1.4rem', md: '1.75rem' },
-                fontFamily: 'Inter, sans-serif',
+                color: '#0195FF', 
+                fontSize: { xs: '16px', md: '20px' },
+                fontFamily: 'poppins',
                 mt: -0.5, 
               }}
             >
@@ -312,27 +293,29 @@ import { MapPin ,Star  } from 'lucide-react';
 
           <TextField
             variant="outlined"
-            fullWidth 
+             
             defaultValue="meet.google.com/abc/defg/hij" 
             sx={{
+                width:'40%',
+                fontStyle: 'italic',
               '& .MuiOutlinedInput-root': {
                 borderRadius: '8px',
                 backgroundColor: '#fff',
                 '& fieldset': {
-                  borderColor: '#e0e0e0', 
+                  borderColor: '#CCCCCC', 
                 },
                 '&:hover fieldset': {
-                  borderColor: '#c0c0c0', 
+                  borderColor: '#CCCCCC', 
                 },
                 '&.Mui-focused fieldset': {
-                  borderColor: '#3f51b5', 
+                  borderColor: '#CCCCCC', 
                   borderWidth: '2px',
                 },
               },
               '& .MuiInputBase-input': {
                 fontSize: { xs: '0.95rem', md: '1.1rem' },
-                fontFamily: 'Inter, sans-serif',
-                color: '#333',
+                fontFamily: 'poppins',
+                color: '#56B8FF',
                 padding: '12px 14px',
               },
               flexGrow: 1,
@@ -345,18 +328,17 @@ import { MapPin ,Star  } from 'lucide-react';
           <Button
             variant="contained"
             sx={{
-              backgroundColor: '#007bff', 
+
+              backgroundColor: '#0195FF', 
               color: '#fff',
               textTransform: 'none',
-              fontWeight: 600,
-              fontSize: { xs: '1rem', md: '1.1rem' },
+              fontWeight: 500,
+              fontSize: { xs: '12px', md: '16px' },
               borderRadius: '8px',
-              px: { xs: 3, md: 4 }, 
+              px: { xs: 3, md: 14 }, 
               py: { xs: 1.2, md: 1.5 }, 
-              boxShadow: '0px 4px 12px rgba(0, 123, 255, 0.2)', 
               '&:hover': {
                 backgroundColor: '#0056b3', 
-                boxShadow: '0px 6px 16px rgba(0, 123, 255, 0.3)',
               },
               flexShrink: 0, 
               width: { xs: '100%', sm: 'auto' }, 
