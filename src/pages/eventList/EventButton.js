@@ -33,7 +33,6 @@ export default function EventButton() {
                 sx: {
                     borderRadius: "33px", 
                   borderColor: "1px solid #0195FF" ,
-                  borderColor: "#2196f3",
                   "& .MuiOutlinedInput-notchedOutline": {
                     borderColor: "#2196f3",
                   },

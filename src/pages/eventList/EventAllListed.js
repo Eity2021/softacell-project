@@ -76,7 +76,7 @@ const events = [
 export default function EventAllListed() {
   return (
     <Box >
-      <Box sx={{ p: 4, minHeight: '100vh' }}>
+      <Box sx={{ p: 4}}>
         {/* Table Header */}
         <Box
           sx={{
@@ -88,13 +88,13 @@ export default function EventAllListed() {
           }}
         >
           {/* Adjusted flexGrow values to roughly match visual distribution */}
-          <Typography variant="body2" sx={{ width: '5%', fontSize: '20px', fontWeight: 500, fontFamily: 'poppins', color: '#161616' }}>SL</Typography>
-          <Typography variant="body2" sx={{ width: '15%', fontSize: '20px', fontWeight: 500, fontFamily: 'poppins', color: '#161616' }}>Event Name</Typography>
-          <Typography variant="body2" sx={{ width: 1.5, fontSize: '20px', fontWeight: 500, fontFamily: 'poppins', color: '#161616' }}>Event Date</Typography>
-          <Typography variant="body2" sx={{ width: 1.5, fontSize: '20px', fontWeight: 500, fontFamily: 'poppins', color: '#161616' }}>Event Location</Typography>
-          <Typography variant="body2" sx={{ width: 1, fontSize: '20px', fontWeight: 500, fontFamily: 'poppins', color: '#161616' }}>Country</Typography>
-          <Typography variant="body2" sx={{ width: 1, fontSize: '20px', fontWeight: 500, fontFamily: 'poppins', color: '#161616' }}>Status</Typography>
-          <Typography variant="body2" sx={{ width: 1, fontSize: '20px', fontWeight: 500, fontFamily: 'poppins', color: '#161616' }}>Actions</Typography>
+          <Typography variant="body2" sx={{ width: '15px', fontSize: '20px', fontWeight: 500, fontFamily: 'poppins', color: '#161616' }}>SL</Typography>
+          <Typography variant="body2" sx={{ width: '200px', fontSize: '20px', fontWeight: 500, fontFamily: 'poppins', color: '#161616' }}>Event Name</Typography>
+          <Typography variant="body2" sx={{ width: '150px', fontSize: '20px', fontWeight: 500, fontFamily: 'poppins', color: '#161616' }}>Event Date</Typography>
+          <Typography variant="body2" sx={{ width: '200px', fontSize: '20px', fontWeight: 500, fontFamily: 'poppins', color: '#161616' }}>Event Location</Typography>
+          <Typography variant="body2" sx={{ width: '100px', fontSize: '20px', fontWeight: 500, fontFamily: 'poppins', color: '#161616' }}>Country</Typography>
+          <Typography variant="body2" sx={{ width: '80px', fontSize: '20px', fontWeight: 500, fontFamily: 'poppins', color: '#161616' }}>Status</Typography>
+          <Typography variant="body2" sx={{ width: '160px', fontSize: '20px', fontWeight: 500, fontFamily: 'poppins', color: '#161616' }}>Actions</Typography>
         </Box>
 
         {/* Event Rows */}
@@ -122,12 +122,12 @@ export default function EventAllListed() {
                 {/* SL */}
 
 
-                <Typography variant="body1" sx={{ fontWeight: 'medium', width: '5%' }}>
+                <Typography variant="body1" sx={{ fontWeight: 'medium', width: '15px'  }}>
                   {event.id}
                 </Typography>
 
                 {/* Event Name */}
-                <Box sx={{ flexGrow: 1.5 }}>
+                <Box sx={{  width: '200px'}}>
                   <Typography variant="body1" sx={{ fontSize: '16px', fontWeight: 500, fontFamily: 'poppins', color: '#000' }}>
                     {event.eventName}
                   </Typography>
@@ -137,7 +137,7 @@ export default function EventAllListed() {
                 </Box>
 
                 {/* Event Date */}
-                <Box sx={{ flexGrow: 1.5 }}>
+                <Box sx={{ width: '150px'}}>
                   <Typography variant="body1" sx={{ fontSize: '16px', fontWeight: 500, fontFamily: 'poppins', color: '#000' }}>
                     {event.eventDate}
                   </Typography>
@@ -145,8 +145,10 @@ export default function EventAllListed() {
                     {event.eventTime}
                   </Typography>
                 </Box>
+
+
                 {/* Event Location */}
-                <Box sx={{ flexGrow: 1 }}>
+                <Box sx={{ width: '200px' }}>
                   <Typography variant="body1" sx={{ fontSize: '16px', fontWeight: 500, fontFamily: 'poppins', color: '#000' }}>
                     {event.eventLocation}
                   </Typography>
@@ -155,7 +157,7 @@ export default function EventAllListed() {
                   </Typography>
                 </Box>
                 {/* Country */}
-                <Box sx={{ flexGrow: 1 }}>
+                <Box sx={{ width: '100px'}}>
                   <Typography variant="body1" sx={{ flexGrow: 1, fontSize: '16px', fontWeight: 500, fontFamily: 'poppins', color: '#000' }}>
                     {event.eventLocation}
                   </Typography>
@@ -164,7 +166,7 @@ export default function EventAllListed() {
                   </Typography>
                 </Box>
                 {/* Status Chip */}
-                <Box sx={{ flexGrow: 1 }}>
+                <Box sx={{  width: '80px'}}>
                   {
                     event.status === "Approved" ? (
                       <Typography size="small"
@@ -191,14 +193,10 @@ export default function EventAllListed() {
                         </Typography>
                       )
                   }
-
-
                 </Box>
-
-
                 {/* Actions */}
-                <Stack direction="row" spacing={0.5} sx={{ flexGrow: 1, justifyContent: 'flex-end' }}>
-                  <IconButton size="small" sx={{ color: '#9E9E9E' }}> {/* Neutral color for icons */}
+                <Stack direction="row" spacing={0.5} sx={{ width: '160px', justifyContent: 'flex-end' }}>
+                  <IconButton size="small" sx={{ color: '#9E9E9E' }}>
                     <Visibility fontSize="small" />
                   </IconButton>
                   <IconButton size="small" color='#161616'>

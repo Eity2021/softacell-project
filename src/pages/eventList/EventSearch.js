@@ -66,8 +66,10 @@ export default function EventSearch() {
     </Box>
 
 
-     <EventAllListed></EventAllListed>
+<Box>
+   <EventAllListed></EventAllListed> 
 
+</Box>
         {/* Pagination */}
         <Box display="flex" justifyContent="space-between" alignItems="center" mt={2}>
           <Box display="flex" alignItems="center" gap={1}>
