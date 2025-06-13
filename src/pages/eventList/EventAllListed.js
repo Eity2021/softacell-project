@@ -9,21 +9,23 @@ import {
   Trash2 as Delete,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { setSelectedEventId } from '../../features/event/eventSlice';
+export default function EventAllListed({ event }) {
 
-
-export default function EventAllListed({event}) {
-  
   let allEvent = event?.results;
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const  singlePage = (id) => {
-   navigate(`/detailsMainIndex/${id}`)
+  const singlePage = (id) => {
+    dispatch(setSelectedEventId(id));
+    navigate(`/detailsMainIndex/${id}`)
 
   }
 
   return (
     <Box >
-      <Box sx={{ p: 2,mt:5}}>
+      <Box sx={{ p: 2, mt: 5 ,maxWidth:'100%'}} >
         {/* Table Header */}
         <Box
           sx={{
@@ -53,7 +55,7 @@ export default function EventAllListed({event}) {
                 p: 4,
                 borderRadius: '8px',
                 border: event?.bg_color !== 'transparent' ? `1px solid ${event?.bg_color}` : '1px solid #CCCCCC',
-                boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.0)', 
+                boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.0)',
                 '&:hover': {
                   boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.0)',
                 },
@@ -69,14 +71,14 @@ export default function EventAllListed({event}) {
                 {/* SL */}
 
 
-                <Typography variant="body1" sx={{ fontWeight: 'medium', width: '15px'  }}>
+                <Typography variant="body1" sx={{ fontWeight: 'medium', width: '15px' }}>
                   {event.id}
                 </Typography>
 
                 {/* Event Name */}
-                <Box sx={{  width: '200px'}}>
+                <Box sx={{ width: '200px' }}>
                   <Typography variant="body1" sx={{ fontSize: '16px', fontWeight: 500, fontFamily: 'poppins', color: '#000' }}>
-                    {event?.title || "Ajmon Brokers Event" }
+                    {event?.title || "Ajmon Brokers Event"}
                   </Typography>
                   <Typography variant="caption" sx={{ fontSize: '10px', fontWeight: 400, fontFamily: 'poppins', color: '#666666' }}>
                     Powered by {event.poweredBy}
@@ -84,7 +86,7 @@ export default function EventAllListed({event}) {
                 </Box>
 
                 {/* Event Date */}
-                <Box sx={{ width: '150px'}}>
+                <Box sx={{ width: '150px' }}>
                   <Typography variant="body1" sx={{ fontSize: '16px', fontWeight: 500, fontFamily: 'poppins', color: '#000' }}>
                     {new Date(event?.start_date).toLocaleDateString('en-US', {
                       year: 'numeric',
@@ -92,21 +94,19 @@ export default function EventAllListed({event}) {
                       day: 'numeric',
                     })}
                   </Typography>
-                 <Typography variant="caption" sx={{ fontSize: '10px', fontWeight: 400, fontFamily: 'poppins', color: '#333333' }}>
-              {new Date(`1970-01-01T${event?.start_time}`).toLocaleTimeString('en-US', {
-    hour: 'numeric',
-    minute: '2-digit',
-    hour12: true,
-  })} -{' '}
-  {new Date(`1970-01-01T${event?.end_time}`).toLocaleTimeString('en-US', {
-    hour: 'numeric',
-    minute: '2-digit',
-    hour12: true,
-  })}
-                  </Typography> 
+                  <Typography variant="caption" sx={{ fontSize: '10px', fontWeight: 400, fontFamily: 'poppins', color: '#333333' }}>
+                    {new Date(`1970-01-01T${event?.start_time}`).toLocaleTimeString('en-US', {
+                      hour: 'numeric',
+                      minute: '2-digit',
+                      hour12: true,
+                    })} -{' '}
+                    {new Date(`1970-01-01T${event?.end_time}`).toLocaleTimeString('en-US', {
+                      hour: 'numeric',
+                      minute: '2-digit',
+                      hour12: true,
+                    })}
+                  </Typography>
                 </Box>
-
-
                 {/* Event Location */}
                 <Box sx={{ width: '200px' }}>
                   <Typography variant="body1" sx={{ fontSize: '16px', fontWeight: 500, fontFamily: 'poppins', color: '#000' }}>
@@ -117,16 +117,16 @@ export default function EventAllListed({event}) {
                   </Typography>
                 </Box>
                 {/* Country */}
-                <Box sx={{ width: '100px'}}>
+                <Box sx={{ width: '100px' }}>
                   <Typography variant="body1" sx={{ flexGrow: 1, fontSize: '16px', fontWeight: 500, fontFamily: 'poppins', color: '#000' }}>
-                     {event?.location || "Dubai"}
+                    {event?.location || "Dubai"}
                   </Typography>
                   <Typography variant="caption" sx={{ fontSize: '10px', fontWeight: 400, fontFamily: 'poppins', color: '#333333' }}>
-                  {event?.SubLocation || 'UAE'}
+                    {event?.SubLocation || 'UAE'}
                   </Typography>
                 </Box>
                 {/* Status Chip */}
-                <Box sx={{  width: '80px'}}>
+                <Box sx={{ width: '80px' }}>
                   {
                     event?.status === "approved" ? (
                       <Typography size="small"
@@ -156,16 +156,16 @@ export default function EventAllListed({event}) {
                 </Box>
                 {/* Actions */}
                 <Stack direction="row" spacing={0.5} sx={{ width: '160px', justifyContent: 'flex-end' }}>
-                  <IconButton size="small" sx={{ color: '#161616' }} onClick={() => {singlePage(event?.id)}}>
+                  <IconButton size="small" sx={{ color: '#161616' }} onClick={() => { singlePage(event?.id) }}>
                     <Visibility fontSize="small" />
                   </IconButton>
-                  <IconButton size="small" sx={{color:'#161616'}}>
+                  <IconButton size="small" sx={{ color: '#161616' }}>
                     <DownloadIcon fontSize="small" />
                   </IconButton>
-                  <IconButton size="small" sx={{color:'#161616'}}>
+                  <IconButton size="small" sx={{ color: '#161616' }}>
                     <Edit fontSize="small" />
                   </IconButton>
-                  <IconButton size="small" sx={{color:'#161616'}}>
+                  <IconButton size="small" sx={{ color: '#161616' }}>
                     <Delete fontSize="small" />
                   </IconButton>
                 </Stack>

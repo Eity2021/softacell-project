@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState,useEffect } from "react";
 import {
   Box,
   Button,
@@ -10,6 +10,9 @@ import {
   Typography,
   FormControl,
   Paper,
+  Checkbox,
+  FormGroup,
+  FormControlLabel
 } from "@mui/material";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -20,21 +23,76 @@ import { Upload } from "lucide-react";
 import CustomSelect from "../../components/customSelect/CustomSelect";
 import useDatePicker from "../../components/customDatePicker/useDatePicker";
 import { useForm, Controller } from 'react-hook-form';
+
+const categoriesData = 
+{
+"real_estate": [
+"property_showcase_launch",
+"investor_summit",
+"developer_meetup",
+"real_estate_expo_trade_show",
+"government_legal_update"
+],
+"luxury_asset": [
+"luxury_car_exhibition",
+"yacht_jet_showcase",
+"luxury_watch_collectible"
+],
+"educational_and_training": [
+"real_estate_sales_training",
+"investment_financial_workshop",
+"luxury_market_insight",
+"marketing_digital_growth_training"
+],
+"networking_and_business_growth": [
+"vip_networking_event",
+"b2b_collaboration_meetup",
+"industry_panel_discussion"
+],
+"webinars_online": [
+"live_real_estate_webinar",
+"luxury_market_insight_webinar",
+"developer_qa_session",
+"training_academy_webinar"
+],
+"social_and_exclusive": [
+"private_invitation_only_event",
+"exclusive_property_tour",
+"propadya_community_meetup"
+]
+}
+
+
+
 const CustomCalendarIcon = () => (
   <img src={Calender} alt="calendar" style={{ width: 20, height: 20 }} />
 );
 
 export default function Dashboard() {
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [subCategoryOptions, setSubCategoryOptions] = useState([]);
+  const [selectedSubCategory, setSelectedSubCategory] = useState('');
+  const [showRegistrationLinkInput, setShowRegistrationLinkInput] = useState(false);
    const { control, handleSubmit } = useForm();
   const [preview, setPreview] = useState(null);
   const [subCategory, setSubCategory] = useState("");
   const datePicker = useDatePicker();
-  const subCategoryOptions = [
-    { value: "design", label: "Design" },
-    { value: "development", label: "Development" },
-    { value: "marketing", label: "Marketing" },
-  ];
 
+  useEffect(() => {
+    if (selectedCategory) {
+      setSubCategoryOptions(categoriesData[selectedCategory] || []);
+      setSelectedSubCategory(''); 
+    } else {
+      setSubCategoryOptions([]);
+      setSelectedSubCategory('');
+    }
+  }, [selectedCategory]);
+
+  const [line, setLine] = useState('');
+   console.log("line" , line)
+  const handleChange = (event) => {
+    setLine(event.target.value);
+  };
 
   const onSubmit = (data) => {
     console.log("Submitted image file:", data.image[0]);
@@ -106,8 +164,6 @@ export default function Dashboard() {
 
 
 <Box>
-  
-
               <Controller
         name="image"
         control={control}
@@ -133,12 +189,12 @@ export default function Dashboard() {
             }}
           >
             {preview ? (
-              // <img
-              //   src={preview}
-              //   alt="Preview"
-              //   style={{ maxHeight: '100%', maxWidth: '100%', objectFit: 'contain' }}
-              // />
-              <Typography> image get</Typography>
+              <img
+                src={preview}
+                alt="Preview"
+                style={{ maxHeight: '30%', maxWidth: '30%', objectFit: 'contain' }}
+              />
+
             ) : (
               <>
                 <Typography variant="body1" fontWeight={600}>
@@ -166,7 +222,7 @@ export default function Dashboard() {
       />
 </Box>
 
-        <Box>
+        <Box sx={{display:'flex', justifyContent:'space-between'}}>
           <Typography
             sx={{
               fontWeight: 600,
@@ -181,6 +237,12 @@ export default function Dashboard() {
           >
             Event Information
           </Typography>
+          <FormGroup>
+  <FormControlLabel control={<Checkbox 
+             checked={showRegistrationLinkInput}
+                onChange={(e) => setShowRegistrationLinkInput(e.target.checked)} />} 
+                label="Registration Available" />
+</FormGroup>
         </Box>
 
         <Grid container spacing={2}>
@@ -325,58 +387,17 @@ export default function Dashboard() {
               <Grid size={6} fullWidth>
                 <CustomSelect
                   label="Event category"
-                  value={subCategory}
-                  // onChange={(e) => setSubCategory(e.target.value)}
-                  options={subCategoryOptions}
+                  value={selectedCategory}
+                  onChange={(e) => setSelectedCategory(e.target.value)}
+                  options={Object.keys(categoriesData)}
                 />
               </Grid>
 
               <Grid size={6} fullWidth>
                 <CustomSelect
                   label="Sub category"
-                  value={subCategory}
-                  // onChange={(e) => setSubCategory(e.target.value)}
-                  options={subCategoryOptions}
-                />
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Box>
-
-      <Box sx={{ mt: 2 }}>
-        <Grid container spacing={2}>
-          <Grid size={3}>
-            <Box sx={{ display: "flex", alignItems: "center", height: "100%" }}>
-              <Typography
-                sx={{
-                  fontWeight: 500,
-                  fontSize: "20px",
-                  fontFamily: "poppins",
-                  color: "#161616",
-                }}
-              >
-                Category* <span style={{ color: "red" }}>*</span>
-              </Typography>
-            </Box>
-          </Grid>
-
-          <Grid size={9}>
-            <Grid container spacing={2}>
-              <Grid size={6} fullWidth>
-                <CustomSelect
-                  label="Event category"
-                  value={subCategory}
-                  // onChange={(e) => setSubCategory(e.target.value)}
-                  options={subCategoryOptions}
-                />
-              </Grid>
-
-              <Grid size={6} fullWidth>
-                <CustomSelect
-                  label="Sub category"
-                  value={subCategory}
-                  // onChange={(e) => setSubCategory(e.target.value)}
+                 value={selectedSubCategory}
+                  onChange={(e) => setSelectedSubCategory(e.target.value)}
                   options={subCategoryOptions}
                 />
               </Grid>
@@ -407,11 +428,13 @@ export default function Dashboard() {
               <Grid size={6} fullWidth>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <DatePicker
+                    sx={{
+                      width:'100%'
+                    }}
                     label="Starting Date"
                     value={datePicker.value}
                     onChange={datePicker.onChange}
                     format="YYYY-MM-DD"
-                    slotProps={datePicker.getSlotProps("Choose here")}
                     slots={{
                       openPickerIcon: CustomCalendarIcon,
                     }}
@@ -422,11 +445,13 @@ export default function Dashboard() {
               <Grid size={6} fullWidth>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <DatePicker
+                      sx={{
+                      width:'100%'
+                    }}
                     label="Ending Date"
                     value={datePicker.value}
                     onChange={datePicker.onChange}
                     format="YYYY-MM-DD"
-                    slotProps={datePicker.getSlotProps("Choose here")}
                     slots={{
                       openPickerIcon: CustomCalendarIcon,
                     }}
@@ -437,6 +462,51 @@ export default function Dashboard() {
           </Grid>
         </Grid>
       </Box>
+
+
+
+      <Box sx={{ mt: 2 }}>
+        <Grid container spacing={2}>
+          <Grid size={3}>
+            <Box sx={{ display: "flex", alignItems: "center", height: "100%" }}>
+              <Typography
+                sx={{
+                  fontWeight: 500,
+                  fontSize: "20px",
+                  fontFamily: "poppins",
+                  color: "#161616",
+                }}
+              >
+                Event Time* <span style={{ color: "red" }}>*</span>
+              </Typography>
+            </Box>
+          </Grid>
+
+          <Grid size={9}>
+            <Grid container spacing={2}>
+              <Grid size={6} fullWidth>
+                <CustomSelect
+                  label="Event category"
+                   value={selectedCategory}
+                  onChange={(e) => setSelectedCategory(e.target.value)}
+                  options={Object.keys(categoriesData)}
+                />
+              </Grid>
+
+              <Grid size={6} fullWidth>
+                <CustomSelect
+                  label="Sub category"
+                  value={subCategory}
+                  // onChange={(e) => setSubCategory(e.target.value)}
+                  options={subCategoryOptions}
+                />
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Box>
+
+
 
       <Box sx={{ mt: 2 }}>
         <Grid container spacing={2}>
@@ -456,16 +526,48 @@ export default function Dashboard() {
           </Grid>
 
           <Grid size={9}>
-            <CustomSelect
-              label="Event Type"
-              value={subCategory}
-              // onChange={(e) => setSubCategory(e.target.value)}
-              options={subCategoryOptions}
-            />
+         
+<FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">Choose here</InputLabel>
+  <Select
+    labelId="id"
+    id="select"
+    placeholder="Choose here"
+    label="event Type"
+    onChange={handleChange}
+
+         sx={{
+            borderRadius: '8px',
+            bgcolor: '#fff',
+            '& .MuiSelect-select': {
+              fontStyle: 'italic',
+              color:'#aaa',
+              padding: '18px',
+              fontSize:"16px",
+            },
+            '& .MuiOutlinedInput-notchedOutline': {
+              borderColor: '#ddd',
+            },
+            '&:hover .MuiOutlinedInput-notchedOutline': {
+              borderColor: '#ccc',
+            },
+            '& .MuiSelect-icon': {
+              color: '#2196f3',
+            },
+          }}
+  >
+    <MenuItem >Choose here</MenuItem>
+    <MenuItem value="online">Online</MenuItem>
+    <MenuItem value="offline">Offline</MenuItem>
+  </Select>
+</FormControl>
+
+
           </Grid>
         </Grid>
       </Box>
-
+{
+  line === "offline" && (
       <Box sx={{ mt: 2 }}>
         <Grid container spacing={2}>
           <Grid size={3}>
@@ -478,7 +580,52 @@ export default function Dashboard() {
                   color: "#161616",
                 }}
               >
-                Enter Event location* <span style={{ color: "red" }}>*</span>
+                Enter Event location <span style={{ color: "red" }}>*</span>
+              </Typography>
+            </Box>
+          </Grid>
+          <Grid size={9}>
+            <Grid item xs={12} fullWidth>
+              <Box
+                sx={{ display: "flex", alignItems: "center", height: "100%" }}
+              >
+                <TextField
+                  fullWidth
+                  label="Type here"
+                  required
+                  variant="outlined"
+                  InputLabelProps={{
+                    required: false,
+                    sx: {
+                      fontStyle: "italic",
+                      fontSize: "1.1rem",
+                    },
+                  }}
+                />
+              </Box>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Box>
+  )
+}
+
+
+{
+  line === "offline" && (
+        <Box sx={{ mt: 2 }}>
+        <Grid container spacing={2}>
+          <Grid size={3}>
+            <Box sx={{ display: "flex", alignItems: "center", height: "100%" }}>
+              <Typography
+                sx={{
+                  fontWeight: 500,
+                  fontSize: "20px",
+                  fontFamily: "poppins",
+                  color: "#161616",
+                }}
+              >
+                Event location Link <span style={{ color: "red" }}>*</span>
               </Typography>
             </Box>
           </Grid>
@@ -506,45 +653,12 @@ export default function Dashboard() {
         </Grid>
       </Box>
 
-      <Box sx={{ mt: 2 }}>
-        <Grid container spacing={2}>
-          <Grid size={3}>
-            <Box sx={{ display: "flex", alignItems: "center", height: "100%" }}>
-              <Typography
-                sx={{
-                  fontWeight: 500,
-                  fontSize: "20px",
-                  fontFamily: "poppins",
-                  color: "#161616",
-                }}
-              >
-                Event location Link* <span style={{ color: "red" }}>*</span>
-              </Typography>
-            </Box>
-          </Grid>
-          <Grid size={9}>
-            <Grid item xs={12} fullWidth>
-              <Box
-                sx={{ display: "flex", alignItems: "center", height: "100%" }}
-              >
-                <TextField
-                  fullWidth
-                  label="Type here"
-                  required
-                  variant="outlined"
-                  InputLabelProps={{
-                    required: false,
-                    sx: {
-                      fontStyle: "italic",
-                      fontSize: "1.1rem",
-                    },
-                  }}
-                />
-              </Box>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Box>
+  )
+}
+
+
+
+
 
       <Box sx={{ mt: 2 }}>
         <Grid container spacing={2}>
@@ -558,7 +672,7 @@ export default function Dashboard() {
                   color: "#161616",
                 }}
               >
-                Event Video link (YouTube)*{" "}
+                Event Video link (YouTube)
                 <span style={{ color: "red" }}>*</span>
               </Typography>
             </Box>
@@ -587,6 +701,8 @@ export default function Dashboard() {
         </Grid>
       </Box>
 
+{
+  line === "online" && (
       <Box sx={{ mt: 2 }}>
         <Grid container spacing={2}>
           <Grid size={3}>
@@ -599,7 +715,7 @@ export default function Dashboard() {
                   color: "#161616",
                 }}
               >
-                Event Meeting Link* <span style={{ color: "red" }}>*</span>
+                Event Meeting Link <span style={{ color: "red" }}>*</span>
               </Typography>
             </Box>
           </Grid>
@@ -626,8 +742,13 @@ export default function Dashboard() {
           </Grid>
         </Grid>
       </Box>
+  )
+}
 
-      <Box sx={{ mt: 2 }}>
+
+{
+  showRegistrationLinkInput && (
+          <Box sx={{ mt: 2 }}>
         <Grid container spacing={2}>
           <Grid size={3}>
             <Box sx={{ display: "flex", alignItems: "center", height: "100%" }}>
@@ -639,7 +760,7 @@ export default function Dashboard() {
                   color: "#161616",
                 }}
               >
-                Registration Link* <span style={{ color: "red" }}>*</span>
+                Registration Link<span style={{ color: "red" }}>*</span>
               </Typography>
             </Box>
           </Grid>
@@ -666,6 +787,9 @@ export default function Dashboard() {
           </Grid>
         </Grid>
       </Box>
+  )
+}
+
 
       <Box sx={{ mt: 2 }}>
         <Grid container spacing={2}>
@@ -957,7 +1081,7 @@ export default function Dashboard() {
   
 
               <Controller
-        name="image"
+        name="perssonImage"
         control={control}
         defaultValue={[]}
         render={({ field: { onChange, ...field } }) => (
@@ -981,12 +1105,12 @@ export default function Dashboard() {
             }}
           >
             {preview ? (
-              // <img
-              //   src={preview}
-              //   alt="Preview"
-              //   style={{ maxHeight: '100%', maxWidth: '100%', objectFit: 'contain' }}
-              // />
-              <Typography> image get</Typography>
+              <img
+                src={preview}
+                alt="Preview"
+                style={{ maxHeight: '50%', maxWidth: '50%', objectFit: 'contain' }}
+              />
+
             ) : (
               <>
                 <Typography variant="body1" fontWeight={600}>

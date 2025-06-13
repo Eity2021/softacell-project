@@ -1,5 +1,5 @@
 import { Box, Typography, TextField, Grid } from "@mui/material";
-export default function FeedBack() {
+export default function FeedBack({perEvent}) {
   return (
     <Box sx={{ mt: 6 }}>
       <Grid container spacing={2}>

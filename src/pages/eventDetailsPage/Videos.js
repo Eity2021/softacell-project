@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Typography, TextField, Button, Grid } from "@mui/material";
 import { MapPin, Star } from "lucide-react";
 import MeetingLinks from "./MeetingLinks";
-export default function Videos() {
+export default function Videos({perEvent}) {
   return (
     <Box sx={{ width: "100%", mt: 4 }}>
       <Grid container spacing={10}>
@@ -49,7 +49,7 @@ export default function Videos() {
               <iframe
                 width="100%"
                 height="100%"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&controls=1&modestbranding=1&rel=0&showinfo=0"
+                src={perEvent?.location_link || "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&controls=1&modestbranding=1&rel=0&showinfo=0"}
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen

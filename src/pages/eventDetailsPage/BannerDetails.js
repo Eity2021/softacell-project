@@ -4,9 +4,11 @@ import { MapPin ,Share ,Navigation  } from 'lucide-react';
 import detailsEvent from "../../image/banner/detailsEvent.png";
 import tablerLocation from "../../image/icons/tabler_location.png";
 import Vector from "../../image/icons/Vector.png";
-export default function BannerDetails () {
+export default function BannerDetails ({perEvent}) {
+
+  // const {title,start_time,end_time ,start_date,description,country,district} = perEvent;
   return (
-    <Box sx={{height:'66vh'}}>
+    <Box sx={{height:'70vh'}}>
    
       <Box
         sx={{
@@ -43,7 +45,8 @@ export default function BannerDetails () {
                 fontFamily:'poppins'
               }}
             >
-              Ajmon Brokers Event
+              {perEvent?.title || "Ajmon Brokers Event"}
+              
             </Typography>
             <Box sx={{ backgroundColor:'transparent' ,display: 'flex', alignItems: 'center',gap:1 ,flexShrink: 0}}>
          
@@ -57,7 +60,7 @@ export default function BannerDetails () {
                       fontFamily:'poppins'
                 }}
               >
-                Al Ain 
+                {perEvent?.district || 'Al Ain'}
               </Typography>
               <Typography
                 variant="body2"
@@ -69,7 +72,7 @@ export default function BannerDetails () {
                       fontFamily:'poppins'
                 }}
               >
-                Dubai
+                {perEvent?.country || 'Dubai' }
               </Typography>
               
             <Box>
@@ -108,8 +111,21 @@ export default function BannerDetails () {
                 mb: { xs: 1, md: 0 }, 
               }}
             >
-              10:00 am - 7:00 pm at
+            
+              {new Date(`1970-01-01T${perEvent?.start_time}`).toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true,
+  })} -{' '}
+  {new Date(`1970-01-01T${perEvent?.end_time}`).toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true,
+  })}
             </Typography>
+
+
+
               <Typography
               variant="body1"
               sx={{
@@ -120,7 +136,11 @@ export default function BannerDetails () {
                 mb: { xs: 1, md: 0 }, 
               }}
             >
-              21'st March-2025
+               {new Date(perEvent?.start_date).toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                    })}
             </Typography>
             </Box>
            <Box  sx={{ display: 'flex', gap:1}}>
@@ -148,12 +168,6 @@ export default function BannerDetails () {
             </Typography>
           </Box>
           </Box>
-
-
-
-
-
-
 
           {/* Section: REAL ESTATE EVENTS */}
       <Box  sx={{ mt: 2, mb: 1,display:'flex',justifyContent:'space-between' }}>
@@ -220,7 +234,7 @@ export default function BannerDetails () {
                 fontFamily:'poppins'
               }}
             >
-              A once in a generation opportunity to secure a luxury custom built home in what will be one of Sydney's great waterfront estates with a large private marina pen in the heart of Pittwater
+           {perEvent?.description || "A once in a generation opportunity to secure a luxury custom built home in what will be one of Sydney’s great waterfront estates with a large private marina pen in the heart of Pittwater"}
             </Typography>
   
           </Box>
