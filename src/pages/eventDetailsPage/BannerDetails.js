@@ -6,7 +6,7 @@ import tablerLocation from "../../image/icons/tabler_location.png";
 import Vector from "../../image/icons/Vector.png";
 export default function BannerDetails () {
   return (
-    <Box sx={{height:'74vh'}}>
+    <Box sx={{height:'66vh'}}>
    
       <Box
         sx={{

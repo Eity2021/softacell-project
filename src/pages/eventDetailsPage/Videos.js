@@ -1,22 +1,20 @@
-import React from 'react';
-import { Box, Typography, TextField, Button,Grid} from '@mui/material';
-import { MapPin ,Star  } from 'lucide-react';
- export default function  Videos() {
+import React from "react";
+import { Box, Typography, TextField, Button, Grid } from "@mui/material";
+import { MapPin, Star } from "lucide-react";
+import MeetingLinks from "./MeetingLinks";
+export default function Videos() {
   return (
-      <Box sx={{ width: '100%',mt:4}}>
- 
-     
-
-<Grid container spacing={10}>
- <Grid size={5}>
-  <Box sx={{ flex: 1 }}>
+    <Box sx={{ width: "100%", mt: 4 }}>
+      <Grid container spacing={10}>
+        <Grid size={5}>
+          <Box sx={{ flex: 1 }}>
             <Typography
               variant="h5"
               sx={{
                 fontWeight: 500,
-                color: '#161616',
-                fontSize: { xs: '22px', md: '32px' },
-                fontFamily: 'poppins',
+                color: "#161616",
+                fontSize: { xs: "22px", md: "32px" },
+                fontFamily: "poppins",
                 mb: 0.5,
               }}
             >
@@ -25,31 +23,29 @@ import { MapPin ,Star  } from 'lucide-react';
             <Typography
               variant="body2"
               sx={{
-                 fontWeight: 400,
-                color: '#161616',
-                fontSize: { xs: '13px', md: '16px' },
-                fontFamily: 'poppins',
+                fontWeight: 400,
+                color: "#161616",
+                fontSize: { xs: "13px", md: "16px" },
+                fontFamily: "poppins",
                 mb: 2,
               }}
             >
               For Better Understand
             </Typography>
-         
 
             <Box
               sx={{
-                width: '100%',
-                height: { xs: '200px', sm: '256px', md: '256px' }, 
-                backgroundColor: '#000',
-                borderRadius: '8px',
-                overflow: 'hidden',
-                position: 'relative',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
+                width: "100%",
+                height: { xs: "200px", sm: "256px", md: "256px" },
+                backgroundColor: "#000",
+                borderRadius: "8px",
+                overflow: "hidden",
+                position: "relative",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
               }}
             >
-           
               <iframe
                 width="100%"
                 height="100%"
@@ -59,42 +55,40 @@ import { MapPin ,Star  } from 'lucide-react';
                 allowFullScreen
                 title="YouTube Video Placeholder"
               ></iframe>
-           
-               <Box
+
+              <Box
                 sx={{
-                  position: 'absolute',
+                  position: "absolute",
                   bottom: { xs: 8, sm: 12 },
                   left: { xs: 8, sm: 12 },
-                  color: '#fff',
-                  display: 'flex',
-                  alignItems: 'center',
-                  backgroundColor: 'rgba(0,0,0,0.6)',
-                  borderRadius: '4px',
+                  color: "#fff",
+                  display: "flex",
+                  alignItems: "center",
+                  backgroundColor: "rgba(0,0,0,0.6)",
+                  borderRadius: "4px",
                   px: 1.5,
                   py: 0.5,
-                  fontSize: { xs: '0.7rem', sm: '0.85rem' },
+                  fontSize: { xs: "0.7rem", sm: "0.85rem" },
                   fontWeight: 500,
                 }}
               >
                 Azura Residences
               </Box>
 
-
-
               <Box
                 sx={{
-                  position: 'absolute',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
                   width: { xs: 50, sm: 70 },
                   height: { xs: 50, sm: 70 },
-                  backgroundColor: 'rgba(255,0,0,0.8)', 
-                  borderRadius: '50%',
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  cursor: 'pointer',
+                  backgroundColor: "rgba(255,0,0,0.8)",
+                  borderRadius: "50%",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  cursor: "pointer",
                 }}
               >
                 <Box
@@ -102,70 +96,80 @@ import { MapPin ,Star  } from 'lucide-react';
                   sx={{
                     width: 0,
                     height: 0,
-                    borderLeft: { xs: '15px solid #fff', sm: '20px solid #fff' },
-                    borderTop: { xs: '10px solid transparent', sm: '12px solid transparent' },
-                    borderBottom: { xs: '10px solid transparent', sm: '12px solid transparent' },
-                    marginLeft: { xs: '3px', sm: '5px' }, 
+                    borderLeft: {
+                      xs: "15px solid #fff",
+                      sm: "20px solid #fff",
+                    },
+                    borderTop: {
+                      xs: "10px solid transparent",
+                      sm: "12px solid transparent",
+                    },
+                    borderBottom: {
+                      xs: "10px solid transparent",
+                      sm: "12px solid transparent",
+                    },
+                    marginLeft: { xs: "3px", sm: "5px" },
                   }}
                 />
               </Box>
               <Typography
                 sx={{
-                  position: 'absolute',
+                  position: "absolute",
                   bottom: { xs: 8, sm: 12 },
                   right: { xs: 8, sm: 12 },
-                  color: '#fff',
-                  fontSize: { xs: '0.65rem', sm: '0.75rem' },
-                  backgroundColor: 'rgba(0,0,0,0.6)',
-                  borderRadius: '4px',
+                  color: "#fff",
+                  fontSize: { xs: "0.65rem", sm: "0.75rem" },
+                  backgroundColor: "rgba(0,0,0,0.6)",
+                  borderRadius: "4px",
                   px: 0.8,
                   py: 0.3,
                 }}
               >
                 Watch on YouTube
               </Typography>
-         
             </Box>
           </Box>
-  </Grid>
+        </Grid>
         <Grid size={7}>
           <Box sx={{ flex: 1 }}>
             <Typography
               variant="h5"
               sx={{
-               fontWeight: 600,
-                color: '#161616',
-                fontSize: { xs: '22px', md: '32px' },
-                fontFamily: 'poppins',
+                fontWeight: 600,
+                color: "#161616",
+                fontSize: { xs: "22px", md: "32px" },
+                fontFamily: "poppins",
                 mb: 0.5,
               }}
             >
-              <MapPin sx={{ verticalAlign: 'middle', mr: 1, color: '#3f51b5' }} />
+              <MapPin
+                sx={{ verticalAlign: "middle", mr: 1, color: "#3f51b5" }}
+              />
               Event Location
             </Typography>
             <Typography
               variant="body2"
               sx={{
-                color: '#161616',
-                fontSize: { xs: '13px', md: '16px' },
-                fontFamily: 'poppins',
-                  mb: 2,ml:3,
+                color: "#161616",
+                fontSize: { xs: "13px", md: "16px" },
+                fontFamily: "poppins",
+                mb: 2,
+                ml: 3,
               }}
             >
               Find our place easily
             </Typography>
-      
+
             <Box
               sx={{
-                width: '100%',
-                height: { xs: '250px', sm: '2560px', md: '256px' }, 
-                backgroundColor: '#e0e0e0',
-                borderRadius: '8px',
-                overflow: 'hidden',
-                position: 'relative',
+                width: "100%",
+                height: { xs: "250px", sm: "2560px", md: "256px" },
+                backgroundColor: "#e0e0e0",
+                borderRadius: "8px",
+                overflow: "hidden",
+                position: "relative",
               }}
             >
-      
               <iframe
                 width="100%"
                 height="100%"
@@ -175,56 +179,84 @@ import { MapPin ,Star  } from 'lucide-react';
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Event Location Map"
               ></iframe>
-     
+
               <Box
                 sx={{
-                  position: 'absolute',
+                  position: "absolute",
                   top: { xs: 8, sm: 16 },
                   left: { xs: 8, sm: 16 },
-                  backgroundColor: '#fff',
-                  borderRadius: '8px',
+                  backgroundColor: "#fff",
+                  borderRadius: "8px",
                   p: { xs: 1.5, sm: 2 },
-                  boxShadow: '0px 2px 10px rgba(0,0,0,0.1)',
-                  minWidth: { xs: 'calc(100% - 32px)', sm: '250px' },
-                  maxWidth: '500px',
+                  boxShadow: "0px 2px 10px rgba(0,0,0,0.1)",
+                  minWidth: { xs: "calc(100% - 32px)", sm: "250px" },
+                  maxWidth: "500px",
                 }}
               >
-                <Typography variant="body1" sx={{ fontWeight: 600, color: '#161616', fontSize: { xs: '12px', sm: '12px' } }}>
-                  Azura By IGO
-                </Typography>
-<Box sx={{display:'flex', gap:3}}>
-          <Typography variant="body2" sx={{ color: '#666',fontSize: { xs: '12px', sm: '12px' }, mt: 0.5 }}>
-                  77JW-9JF-Dubai Pro - Dubai Islands -Front -
-                  <br /> Dubai United Arab Emirates
-                </Typography>
-
-         <Button
-                  variant="contained"
+                <Typography
+                  variant="body1"
                   sx={{
-                    ml: 1, 
-                     backgroundColor:'transparent',
-                    color: '#0195FF',
-                    textTransform: 'none',
                     fontWeight: 600,
-                    fontSize: { xs: '0.8rem', sm: '0.9rem' },
-                    boxShadow:'none',
-                    px: { xs: 1.5, sm: 2 },
-
-                    '&:hover': {
-                                        backgroundColor:'transparent',
-                    },
+                    color: "#161616",
+                    fontSize: { xs: "12px", sm: "12px" },
                   }}
                 >
-                  Directions
-                </Button>
-    </Box>
+                  Azura By IGO
+                </Typography>
+                <Box sx={{ display: "flex", gap: 3 }}>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: "#666",
+                      fontSize: { xs: "12px", sm: "12px" },
+                      mt: 0.5,
+                    }}
+                  >
+                    77JW-9JF-Dubai Pro - Dubai Islands -Front -
+                    <br /> Dubai United Arab Emirates
+                  </Typography>
 
-          
-                <Box sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
+                  <Button
+                    variant="contained"
+                    sx={{
+                      ml: 1,
+                      backgroundColor: "transparent",
+                      color: "#0195FF",
+                      textTransform: "none",
+                      fontWeight: 600,
+                      fontSize: { xs: "0.8rem", sm: "0.9rem" },
+                      boxShadow: "none",
+                      px: { xs: 1.5, sm: 2 },
+
+                      "&:hover": {
+                        backgroundColor: "transparent",
+                      },
+                    }}
+                  >
+                    Directions
+                  </Button>
+                </Box>
+
+                <Box sx={{ display: "flex", alignItems: "center", mt: 1 }}>
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} sx={{ fontSize: '12px', color: i < 5 ? '#F5C60D' : '#F5C60D' }} color="#F5C60D" size={12}/>
+                    <Star
+                      key={i}
+                      sx={{
+                        fontSize: "12px",
+                        color: i < 5 ? "#F5C60D" : "#F5C60D",
+                      }}
+                      color="#F5C60D"
+                      size={12}
+                    />
                   ))}
-                  <Typography variant="body2" sx={{ color: '#0195FF', ml: 0.5, fontSize: { xs: '0.75rem', sm: '0.85rem' } }}>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: "#0195FF",
+                      ml: 0.5,
+                      fontSize: { xs: "0.75rem", sm: "0.85rem" },
+                    }}
+                  >
                     5.0 • 2 reviews
                   </Typography>
                 </Box>
@@ -232,143 +264,25 @@ import { MapPin ,Star  } from 'lucide-react';
                   variant="text"
                   sx={{
                     mt: 1.5,
-                    color: '#0195FF',
-                    textTransform: 'none',
+                    color: "#0195FF",
+                    textTransform: "none",
                     fontWeight: 500,
-                    fontSize: { xs: '12px', sm: '12px' },
+                    fontSize: { xs: "12px", sm: "12px" },
                     p: 0,
                     minWidth: 0,
                   }}
                 >
                   View larger map
                 </Button>
-           
               </Box>
             </Box>
-            </Box>
-  </Grid>
-
-
-</Grid>
-
-
-
-
-
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: { xs: 'column', sm: 'row' }, 
-            alignItems: { xs: 'flex-start', sm: 'center' }, 
-            gap: { xs: 2, sm: 3 }, 
-            mt: { xs: 4, md: 6 }, 
-          }}
-        >
-          <Box sx={{ flexShrink: 0 }}> 
-            <Typography
-              variant="h5" 
-              sx={{
-                fontWeight: 600,
-                color: '#001E33',
-                fontSize: { xs: '22px', md: '32px' },
-                fontFamily: 'poppins',
-                mb: 0.5,
-              }}
-            >
-              Event
-            </Typography>
-            <Typography
-              variant="h5"
-              sx={{
-                fontWeight: 600,
-                color: '#0195FF', 
-                fontSize: { xs: '16px', md: '20px' },
-                fontFamily: 'poppins',
-                mt: -0.5, 
-              }}
-            >
-              Meeting Link
-            </Typography>
           </Box>
+        </Grid>
+      </Grid>
 
-          <TextField
-            variant="outlined"
-            defaultValue="meet.google.com/abc/defg/hij" 
-            sx={{
-                width:'40%',
-                fontStyle: 'italic',
-              '& .MuiOutlinedInput-root': {
-                borderRadius: '8px',
-                backgroundColor: '#fff',
-                '& fieldset': {
-                  borderColor: '#CCCCCC', 
-                },
-                '&:hover fieldset': {
-                  borderColor: '#CCCCCC', 
-                },
-                '&.Mui-focused fieldset': {
-                  borderColor: '#CCCCCC', 
-                  borderWidth: '2px',
-                },
-              },
-              '& .MuiInputBase-input': {
-                fontSize: { xs: '22px', md: '32px' },
-                fontFamily: 'poppins',
-                color: '#56B8FF',
-                padding: '12px 14px',
-              },
-              flexGrow: 1, 
-            }}
-            InputProps={{
-                readOnly: true, 
-            }}
-          />
-
-          <Button
-            variant="contained"
-            sx={{
-
-              backgroundColor: '#0195FF', 
-              color: '#fff',
-              textTransform: 'none',
-              fontWeight: 500,
-              fontSize: { xs: '12px', md: '16px' },
-              borderRadius: '8px',
-              px: { xs: 3, md: 14 }, 
-              py: { xs: 1.2, md: 1.5 }, 
-              '&:hover': {
-                backgroundColor: '#0056b3', 
-              },
-              flexShrink: 0, 
-              width: { xs: '100%', sm: 'auto' }, 
-            }}
-          >
-            Register Now
-          </Button>
-        </Box>
-        </Box>
+      <Box>
+        <MeetingLinks></MeetingLinks>
+      </Box>
+    </Box>
   );
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
