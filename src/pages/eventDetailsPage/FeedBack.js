@@ -34,7 +34,7 @@ export default function FeedBack() {
 
         <Grid size={10}>
           <Grid container spacing={2}>
-            <Grid size={8}>
+            <Grid size={6}>
               <TextField
                 variant="outlined"
                 fullWeight
