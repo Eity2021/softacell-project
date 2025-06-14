@@ -23,8 +23,8 @@ import { Upload } from "lucide-react";
 import CustomSelect from "../../components/customSelect/CustomSelect";
 import useDatePicker from "../../components/customDatePicker/useDatePicker";
 import { useForm, Controller } from "react-hook-form";
-
-import { categoriesData } from "./categoriesData";
+import { categoriesData } from "./categoriesData"
+import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 
 const CustomCalendarIcon = () => (
   <img src={Calender} alt="calendar" style={{ width: 20, height: 20 }} />
@@ -468,21 +468,19 @@ export default function Dashboard() {
             <Grid size={9}>
               <Grid container spacing={2}>
                 <Grid size={6} fullWidth>
-                  <CustomSelect
-                    label="Starting Time"
-                    value={selectedCategory}
-                    onChange={(e) => setSelectedCategory(e.target.value)}
-                    options={Object.keys(categoriesData)}
-                  />
+               <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <DemoContainer components={['TimePicker']}>
+        <TimePicker label="Starting Time" sx={{width:'100%'}} />
+      </DemoContainer>
+    </LocalizationProvider>
                 </Grid>
 
                 <Grid size={6} fullWidth>
-                  <CustomSelect
-                    label="Ending Time"
-                    value={subCategory}
-                    // onChange={(e) => setSubCategory(e.target.value)}
-                    options={subCategoryOptions}
-                  />
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <DemoContainer components={['TimePicker']}>
+            <TimePicker label="Ending Time" sx={{width:'100%'}} />
+          </DemoContainer>
+        </LocalizationProvider>
                 </Grid>
               </Grid>
             </Grid>
@@ -493,8 +491,7 @@ export default function Dashboard() {
           <Grid container spacing={2}>
             <Grid size={3}>
               <Box
-                sx={{ display: "flex", alignItems: "center", height: "100%" }}
-              >
+                sx={{ display: "flex", alignItems: "center", height: "100%" }}>
                 <Typography
                   sx={{
                     fontWeight: 500,

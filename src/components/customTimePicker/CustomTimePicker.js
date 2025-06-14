@@ -1,64 +1,15 @@
-import React, { useState } from 'react';
-import {
-  Box,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  Typography,
-} from '@mui/material';
+import * as React from 'react';
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 
-const CustomTimePicker = () => {
-  const [hour, setHour] = useState('');
-  const [minute, setMinute] = useState('');
-
-  const hours = Array.from({ length: 24 }, (_, i) => i.toString().padStart(2, '0'));
-  const minutes = Array.from({ length: 60 }, (_, i) => i.toString().padStart(2, '0'));
-
+export default function BasicTimePicker() {
   return (
-    <Box display="flex" alignItems="center" gap={2}>
-      {/* Hour Picker */}
-      <FormControl size="small" sx={{ minWidth: 100 }}>
-        <InputLabel sx={{ fontSize: '14px' }}>Hour</InputLabel>
-        <Select
-          value={hour}
-          onChange={(e) => setHour(e.target.value)}
-          label="Hour"
-          sx={{ fontSize: '14px' }}
-        >
-          {hours.map((hr) => (
-            <MenuItem key={hr} value={hr}>
-              {hr}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-
-      {/* Minute Picker */}
-      <FormControl size="small" sx={{ minWidth: 100 }}>
-        <InputLabel sx={{ fontSize: '14px' }}>Minute</InputLabel>
-        <Select
-          value={minute}
-          onChange={(e) => setMinute(e.target.value)}
-          label="Minute"
-          sx={{ fontSize: '14px' }}
-        >
-          {minutes.map((min) => (
-            <MenuItem key={min} value={min}>
-              {min}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-
-      {/* Optional display */}
-      {hour && minute && (
-        <Typography fontSize="14px" color="text.secondary">
-          Selected: {hour}:{minute}
-        </Typography>
-      )}
-    </Box>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <DemoContainer components={['TimePicker']}>
+        <TimePicker label="Starting Time" sx={{width:'100%'}} />
+      </DemoContainer>
+    </LocalizationProvider>
   );
-};
-
-export default CustomTimePicker;
+}
