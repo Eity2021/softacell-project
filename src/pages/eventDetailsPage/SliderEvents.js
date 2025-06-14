@@ -93,7 +93,7 @@ export default function EventSlider() {
     const [activeDirection, setActiveDirection] = useState("next");
 const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const cardsPerPage = isMobile ? 1 : 5;
+  const cardsPerPage = isMobile ? 2 : 5;
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const totalPages = Math.ceil(events.length / cardsPerPage);
@@ -118,6 +118,7 @@ const goToNext = () => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
+          boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
           px: 2,
         }}
       >

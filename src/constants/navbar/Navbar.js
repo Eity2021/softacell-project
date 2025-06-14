@@ -17,8 +17,6 @@ export default function Navbar() {
     <CustomContainer>
       <Box sx={{ display: "flex", minHeight: "100vh" }}>
         <SideBar routes={routes}></SideBar>
-        {/* Main Content */}
-
         <Box
           component="main"
           sx={{

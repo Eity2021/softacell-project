@@ -21,16 +21,28 @@ export default function SideBar({ routes }) {
 
   return (
     <Box>
-      {/* Sidebar Drawer */}
+
 
       <Box
-        sx={{
-          width: 320,
-          display: "flex",
-          flexDirection: "column",
-          backgroundColor: "#fff",
-          height: "100%",
-        }}
+   sx={{
+    width: {
+      xs: 0,      
+      sm: 0,     
+      md: 0, 
+      lg: 320,    
+    },
+    overflow: 'hidden',
+    transition: 'width 0.3s ease',
+    display: {
+      xs: 'none',
+      sm: 'none',
+      md: 'none',
+      lg: 'block'
+    },
+    flexDirection: "column",
+    backgroundColor: "#fff",
+    height: "100%",
+  }}
       >
 
 

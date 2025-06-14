@@ -477,7 +477,7 @@ export default function Dashboard() {
                   color: "#161616",
                 }}
               >
-                Event Time* <span style={{ color: "red" }}>*</span>
+                Event Time<span style={{ color: "red" }}>*</span>
               </Typography>
             </Box>
           </Grid>
@@ -486,7 +486,7 @@ export default function Dashboard() {
             <Grid container spacing={2}>
               <Grid size={6} fullWidth>
                 <CustomSelect
-                  label="Event category"
+                  label="Starting Time"
                    value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
                   options={Object.keys(categoriesData)}
@@ -495,7 +495,7 @@ export default function Dashboard() {
 
               <Grid size={6} fullWidth>
                 <CustomSelect
-                  label="Sub category"
+                  label="Ending Time"
                   value={subCategory}
                   // onChange={(e) => setSubCategory(e.target.value)}
                   options={subCategoryOptions}
@@ -520,7 +520,7 @@ export default function Dashboard() {
                   color: "#161616",
                 }}
               >
-                Event Type* <span style={{ color: "red" }}>*</span>
+                Event Type <span style={{ color: "red" }}>*</span>
               </Typography>
             </Box>
           </Grid>
@@ -803,7 +803,7 @@ export default function Dashboard() {
                   color: "#161616",
                 }}
               >
-                Country* <span style={{ color: "red" }}>*</span>
+                Country <span style={{ color: "red" }}>*</span>
               </Typography>
             </Box>
           </Grid>
@@ -831,7 +831,7 @@ export default function Dashboard() {
                   color: "#161616",
                 }}
               >
-                District* <span style={{ color: "red" }}>*</span>
+                District <span style={{ color: "red" }}>*</span>
               </Typography>
             </Box>
           </Grid>
@@ -859,7 +859,7 @@ export default function Dashboard() {
                   color: "#161616",
                 }}
               >
-                City* <span style={{ color: "red" }}>*</span>
+                City <span style={{ color: "red" }}>*</span>
               </Typography>
             </Box>
           </Grid>
@@ -903,7 +903,7 @@ export default function Dashboard() {
                   color: "#161616",
                 }}
               >
-                Name* <span style={{ color: "red" }}>*</span>
+                Name <span style={{ color: "red" }}>*</span>
               </Typography>
             </Box>
           </Grid>
@@ -943,7 +943,7 @@ export default function Dashboard() {
                   color: "#161616",
                 }}
               >
-                Phone* <span style={{ color: "red" }}>*</span>
+                Phone <span style={{ color: "red" }}>*</span>
               </Typography>
             </Box>
           </Grid>
@@ -982,7 +982,7 @@ export default function Dashboard() {
                   color: "#161616",
                 }}
               >
-                Email* <span style={{ color: "red" }}>*</span>
+                Email <span style={{ color: "red" }}>*</span>
               </Typography>
             </Box>
           </Grid>
@@ -1023,7 +1023,7 @@ export default function Dashboard() {
                   color: "#161616",
                 }}
               >
-                Company Name* <span style={{ color: "red" }}>*</span>
+                Company Name <span style={{ color: "red" }}>*</span>
               </Typography>
             </Box>
           </Grid>

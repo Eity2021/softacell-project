@@ -24,8 +24,20 @@ export default function EventAllListed({ event }) {
   }
 
   return (
-    <Box >
-      <Box sx={{ p: 2, mt: 5 ,maxWidth:'100%'}} >
+    <Box    
+      sx={{
+    overflowX: {
+      xs: 'auto',  
+      md: 'auto',
+      lg: 'visible' 
+    },
+    WebkitOverflowScrolling: 'touch', 
+    scrollbarWidth: 'none', 
+    '&::-webkit-scrollbar': {
+      display: 'none', 
+    },
+  }}>
+      <Box sx={{ mt: 5 ,width: '1450px' }} >
         {/* Table Header */}
         <Box
           sx={{

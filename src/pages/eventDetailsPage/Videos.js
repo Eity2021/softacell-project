@@ -6,7 +6,7 @@ export default function Videos({perEvent}) {
   return (
     <Box sx={{ width: "100%", mt: 4 }}>
       <Grid container spacing={10}>
-        <Grid size={5}>
+        <Grid size={{xs:12, md:5}}>
           <Box sx={{ flex: 1 }}>
             <Typography
               variant="h5"
@@ -130,7 +130,7 @@ export default function Videos({perEvent}) {
             </Box>
           </Box>
         </Grid>
-        <Grid size={7}>
+        <Grid size={{xs:12, md:7}}>
           <Box sx={{ flex: 1 }}>
             <Typography
               variant="h5"

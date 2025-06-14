@@ -68,7 +68,9 @@ export default function EventSearch({event}) {
 
 
 <Box>
-   <EventAllListed event={event}></EventAllListed> 
+<Box > 
+     <EventAllListed event={event}></EventAllListed> 
+  </Box>
 
 </Box>
         {/* Pagination */}
